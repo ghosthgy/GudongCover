@@ -2,6 +2,7 @@ import { GoogleGenAI } from "@google/genai";
 import { Platform, AIProvider, AppSettings } from "../types";
 import { wechatPrompt } from "../prompts/wechatPrompt";
 import { xhsPrompt } from "../prompts/xhsPrompt";
+import { toutiaoPrompt } from "../prompts/toutiaoPrompt";
 
 const DEEPSEEK_API_URL = "https://api.deepseek.com/chat/completions";
 
@@ -12,7 +13,11 @@ export const generateCoverHtml = async (
 ): Promise<string> => {
   const { provider, apiKey: customKey } = settings;
   
-  const systemPrompt = platform === Platform.WeChat ? wechatPrompt : xhsPrompt;
+  const systemPrompt = platform === Platform.WeChat 
+    ? wechatPrompt 
+    : platform === Platform.Xiaohongshu 
+      ? xhsPrompt 
+      : toutiaoPrompt;
 
   // Common User Prompt
   const userPrompt = `

@@ -14,6 +14,7 @@ interface PreviewSectionProps {
 const BASE_WIDTH = 1080;
 const RATIO_WECHAT = 2.35;
 const RATIO_XHS = 3 / 4;
+const RATIO_TOUTIAO = 16 / 9;
 
 const PreviewSection: React.FC<PreviewSectionProps> = ({ html, platform, isLoading }) => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -23,7 +24,9 @@ const PreviewSection: React.FC<PreviewSectionProps> = ({ html, platform, isLoadi
 
   const targetHeight = platform === Platform.WeChat
     ? BASE_WIDTH / RATIO_WECHAT
-    : BASE_WIDTH / RATIO_XHS;
+    : platform === Platform.Xiaohongshu
+      ? BASE_WIDTH / RATIO_XHS
+      : BASE_WIDTH / RATIO_TOUTIAO;
 
   // Auto-scale calculation
   useEffect(() => {
@@ -87,7 +90,12 @@ const PreviewSection: React.FC<PreviewSectionProps> = ({ html, platform, isLoadi
       // Download
       const link = document.createElement('a');
       link.href = dataUrl;
-      link.download = `gudong-cover-${platform === Platform.WeChat ? 'wechat' : 'xhs'}-${Date.now()}.png`;
+      const platformSuffix = platform === Platform.WeChat 
+        ? 'wechat' 
+        : platform === Platform.Xiaohongshu 
+          ? 'xhs' 
+          : 'toutiao';
+      link.download = `gudong-cover-${platformSuffix}-${Date.now()}.png`;
       link.click();
 
     } catch (error) {
@@ -157,7 +165,7 @@ const PreviewSection: React.FC<PreviewSectionProps> = ({ html, platform, isLoadi
             </div>
             <p className="text-xl font-bold text-slate-500">等待生成...</p>
             <p className="text-sm opacity-70 mt-2">
-              适配 {platform === Platform.WeChat ? '微信公众号 (2.35:1)' : '小红书 (3:4)'}
+              适配 {platform === Platform.WeChat ? '微信公众号 (2.35:1)' : platform === Platform.Xiaohongshu ? '小红书 (3:4)' : '今日头条 (16:9)'}
             </p>
           </div>
         )}

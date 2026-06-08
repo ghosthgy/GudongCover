@@ -1,6 +1,7 @@
 export enum Platform {
   WeChat = 'WECHAT',
-  Xiaohongshu = 'XHS'
+  Xiaohongshu = 'XHS',
+  Toutiao = 'TOUTIAO'
 }
 
 export enum AIProvider {

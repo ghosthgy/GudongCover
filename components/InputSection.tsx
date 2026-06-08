@@ -1,6 +1,6 @@
 import React from 'react';
 import { Platform } from '../types';
-import { Layout, Smartphone, Wand2, AlertTriangle } from 'lucide-react';
+import { Layout, Smartphone, Newspaper, Wand2, AlertTriangle } from 'lucide-react';
 
 interface InputSectionProps {
   topic: string;
@@ -50,28 +50,39 @@ const InputSection: React.FC<InputSectionProps> = ({
       </div>
 
       {/* Platform Toggle */}
-      <div className="grid grid-cols-2 gap-3 p-1 bg-slate-100 rounded-xl">
+      <div className="grid grid-cols-3 gap-2 p-1 bg-slate-100 rounded-xl">
         <button
           onClick={() => setPlatform(Platform.WeChat)}
-          className={`flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-semibold transition-all duration-200 ${
+          className={`flex items-center justify-center gap-1.5 py-2.5 px-1 rounded-lg text-xs font-semibold transition-all duration-200 ${
             platform === Platform.WeChat
               ? 'bg-white text-green-700 shadow-sm ring-1 ring-black/5'
               : 'text-slate-500 hover:text-slate-700'
           }`}
         >
-          <Layout className="w-4 h-4" />
+          <Layout className="w-3.5 h-3.5" />
           微信公众号
         </button>
         <button
           onClick={() => setPlatform(Platform.Xiaohongshu)}
-          className={`flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-semibold transition-all duration-200 ${
+          className={`flex items-center justify-center gap-1.5 py-2.5 px-1 rounded-lg text-xs font-semibold transition-all duration-200 ${
             platform === Platform.Xiaohongshu
               ? 'bg-white text-rose-600 shadow-sm ring-1 ring-black/5'
               : 'text-slate-500 hover:text-slate-700'
           }`}
         >
-          <Smartphone className="w-4 h-4" />
+          <Smartphone className="w-3.5 h-3.5" />
           小红书
+        </button>
+        <button
+          onClick={() => setPlatform(Platform.Toutiao)}
+          className={`flex items-center justify-center gap-1.5 py-2.5 px-1 rounded-lg text-xs font-semibold transition-all duration-200 ${
+            platform === Platform.Toutiao
+              ? 'bg-white text-red-600 shadow-sm ring-1 ring-black/5'
+              : 'text-slate-500 hover:text-slate-700'
+          }`}
+        >
+          <Newspaper className="w-3.5 h-3.5" />
+          今日头条
         </button>
       </div>
 
@@ -125,7 +136,9 @@ const InputSection: React.FC<InputSectionProps> = ({
                 ? 'bg-slate-300 cursor-not-allowed'
                 : platform === Platform.WeChat
                 ? 'bg-gradient-to-r from-green-500 to-emerald-600 hover:shadow-green-200 hover:from-green-600 hover:to-emerald-700'
-                : 'bg-gradient-to-r from-rose-500 to-pink-600 hover:shadow-rose-200 hover:from-rose-600 hover:to-pink-700'
+                : platform === Platform.Xiaohongshu
+                ? 'bg-gradient-to-r from-rose-500 to-pink-600 hover:shadow-rose-200 hover:from-rose-600 hover:to-pink-700'
+                : 'bg-gradient-to-r from-red-500 to-orange-600 hover:shadow-red-200 hover:from-red-600 hover:to-orange-700'
             }`}
             >
             {isLoading ? (
