@@ -125,10 +125,24 @@ https://cover.gudong.site/?title=您的文章标题
    ```
    *(注：在代码中我们使用 `process.env.API_KEY` 是为了配合 WebContainer 环境，本地开发请使用 Vite 的环境变量规则)*
 
+
 4. **启动项目**
    ```bash
    npm run dev
    ```
+
+### 🌐 自动部署 (GitHub Pages)
+
+本项目已内置 GitHub Actions 自动部署工作流。当您将代码推送到 GitHub 的 `main` 分支时，项目会自动进行打包并部署到 GitHub Pages 上。
+
+**启用步骤：**
+1. 将项目推送到您的 GitHub 仓库：
+   ```bash
+   git push origin main
+   ```
+2. 在 GitHub 仓库页面，进入 **Settings** -> **Pages**。
+3. 在 **Build and deployment** -> **Source** 下，将 **Source** 切换为 **GitHub Actions**。
+4. 部署工作流触发完成后，即可通过 `https://<您的 GitHub 用户名>.github.io/<您的仓库名>/` 在线体验您的专属封面生成器！
 
 ---
 
