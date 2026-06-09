@@ -14,6 +14,7 @@ export default defineConfig(({ mode }) => {
   const deepseekKey = process.env.DEEPSEEK_API_KEY || process.env.VITE_DEEPSEEK_API_KEY || env.DEEPSEEK_API_KEY || env.VITE_DEEPSEEK_API_KEY || '';
 
   return {
+    base: './',
     plugins: [react()],
     // This injects the keys into the client-side code at build time
     define: {
