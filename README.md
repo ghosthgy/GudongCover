@@ -20,7 +20,7 @@
 </p>
 
 <p align="center">
-  <a href="https://cover.gudong.site/"><strong>🚀 在线体验 (Live Demo)</strong></a>
+  <a href="https://ghosthgy.github.io/GudongCover/"><strong>🚀 在线体验 (Live Demo)</strong></a>
 </p>
 
 ---
@@ -69,11 +69,11 @@ Gudong Cover 支持通过 URL 参数预填充内容，方便与其他编辑器�
 
 **参数格式：**
 ```
-https://cover.gudong.site/?title=您的文章标题
+https://ghosthgy.github.io/GudongCover/?title=您的文章标题
 ```
 
 **示例：**
-[https://cover.gudong.site/?title=如何使用React构建应用](https://cover.gudong.site/?title=如何使用React构建应用)
+[https://ghosthgy.github.io/GudongCover/?title=如何使用React构建应用](https://ghosthgy.github.io/GudongCover/?title=如何使用React构建应用)
 
 ---
 
